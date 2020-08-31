@@ -1,0 +1,20 @@
+<launch>
+  <!-- will it run using GNU debugger? -->
+  <arg name="DEBUG" default="false" />
+  <arg unless="$(arg DEBUG)" name="launch_prefix_debug" value=""/>
+  <arg     if="$(arg DEBUG)" name="launch_prefix_debug" value="debug_roslaunch"/>
+
+  <!-- will it run as standalone nodelet or using a nodelet manager? -->
+  <arg name="standalone" default="true" />
+  <arg name="manager" default="command_sender_manager" />
+  <arg name="n_threads" default="8" />
+  <arg unless="$(arg standalone)" name="nodelet" value="load"/>
+  <arg     if="$(arg standalone)" name="nodelet" value="standalone"/>
+  <arg unless="$(arg standalone)" name="nodelet_manager" value="$(arg manager)"/>
+  <arg     if="$(arg standalone)" name="nodelet_manager" value=""/>
+
+  <node pkg="nodelet" type="nodelet" name="bag_reader" args="$(arg nodelet) bag_reader/BagReader $(arg nodelet_manager)" launch-prefix="$(arg launch_prefix_debug)" output="screen" required="true">
+    <rosparam file="$(find bag_reader)/config/bag_reader.yaml" />
+  </node>
+
+</launch>

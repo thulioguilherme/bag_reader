@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>bag_reader</name>
+  <version>1.0.0</version>
+  <description>Bag reader package</description>
+
+  <author email="thulioguilherme53@gmail.com">Thulio Amorim</author>
+  <maintainer email="thulioguilherme53@gmail.com">Thulio Amorim</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>rosbag</depend>
+  <depend>nodelet</depend>
+  <depend>nav_msgs</depend>
+  <depend>mrs_lib</depend>
+  <depend>mrs_msgs</depend>
+  <depend>flocking</depend>
+  
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+    <nodelet plugin="${prefix}/plugins.xml" />
+  </export>
+</package>

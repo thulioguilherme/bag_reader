@@ -1,0 +1,5 @@
+<library path="lib/libBagReader">
+  <class name="bag_reader/BagReader" type="bag_reader::BagReader" base_class_type="nodelet::Nodelet">
+    <description> The Bag Reader nodelet</description>
+  </class>
+</library>
