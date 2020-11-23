@@ -51,6 +51,7 @@ class BagReader : public nodelet::Nodelet {
 
     std::vector<std::vector<float>> positions_x_;
     std::vector<std::vector<float>> positions_y_;
+    std::vector<std::vector<float>> positions_z_;
     std::vector<std::vector<float>> headings_;
     std::vector<std::vector<ros::Time>> odom_stamps_;
 

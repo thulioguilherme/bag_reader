@@ -1,13 +1,13 @@
-path_bags: '../Downloads/third_attempt'
+path_bags: '../Downloads/bags_uvdar'
 
 bag_names: [
-  'quebec.bag', 'sierra.bag', 'uniform.bag',
+  'sim_uav1.bag', 'sim_uav2.bag', 'sim_uav3.bag',
 ]
 
 uav_names: [
-  'uav47', 'uav50', 'uav42',
+  'uav1', 'uav2', 'uav3',
 ]
 
 time_step: 1.0 # [s]
 
-path_output: '../Downloads/third_attempt/csv'
+path_output: '../Downloads/bags_uvdar/csv'

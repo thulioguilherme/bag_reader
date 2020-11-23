@@ -31,6 +31,7 @@ void BagReader::onInit() {
 
   positions_x_.resize(num_uavs_);
   positions_y_.resize(num_uavs_);
+  positions_z_.resize(num_uavs_);
   headings_.resize(num_uavs_);
   odom_stamps_.resize(num_uavs_);
 
@@ -117,6 +118,7 @@ void BagReader::readBags() {
           if (msg_odometry != NULL && has_began) {
             positions_x_[i].push_back(msg_odometry->pose.pose.position.x);
             positions_y_[i].push_back(msg_odometry->pose.pose.position.y);
+            positions_z_[i].push_back(msg_odometry->pose.pose.position.z);         
             headings_[i].push_back(mrs_lib::AttitudeConverter(msg_odometry->pose.pose.orientation).getHeading());
 
             odom_stamps_[i].push_back(m.getTime());
@@ -184,7 +186,7 @@ void BagReader::processReadings(){
     }
 
     for (unsigned i = 0; i < num_uavs_; i++) {
-      out_odometry_[i] << positions_x_[i][counter_odom[i]] << "," << positions_y_[i][counter_odom[i]] << "," << headings_[i][counter_odom[i]] << "\n";
+      out_odometry_[i] << positions_x_[i][counter_odom[i]] << "," << positions_y_[i][counter_odom[i]] << "," << positions_z_[i][counter_odom[i]] << "\n";
       out_global_headings_ << headings_[i][counter_odom[i]];
 
       if (i + 1 < num_uavs_) {
@@ -196,7 +198,6 @@ void BagReader::processReadings(){
 
     time_begin_cp += ros::Duration(_time_step_);
   }
-
 
   /* write neighbors files */
   std::vector<unsigned> counter_neighbors(num_uavs_, 0);
